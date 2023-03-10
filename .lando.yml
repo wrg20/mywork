@@ -1,0 +1,51 @@
+env_file:
+  - defaults.env
+name: IllinoisFramework
+recipe: lamp
+drupal: true
+config:
+  webroot: ./illinois_framework/docroot
+  composer_version: '2.0.7'
+  php: '8.0'
+  drush: '10.3.6'
+  xdebug: false
+  database: mariadb:10.3.27
+  apache: 2.4.46
+  config:
+    database: lamp
+    username: lamp
+    password: lamp
+    hostname: database
+    port: 3306
+services:
+  appserver:
+    build_as_root_internal:
+      - apt-get update && apt-get install -y imagemagick libmagickwand-dev
+      - pecl install imagick
+      - docker-php-ext-enable imagick
+    build:
+      - composer require drush/drush:10.3.6
+      - composer require drupal/console --with-all-dependencies
+    overrides:
+      environment:
+        DRUSH_OPTIONS_URI: https://illinoisframework.lndo.site/
+proxy:
+  pma:
+    - phpmyadmin.lndo.site
+tooling:
+  drush:
+    service: appserver
+    cmd: drush --root=./illinois_framework/docroot
+  nano:
+    service: appserver
+  drupal:
+    service: appserver
+  post-import:
+    service: appserver
+    cmd: drush uli
+#host: localhost
+#tooling:
+#  drush:
+#    service: appserver
+#    env:
+#      DRUSH_OPTIONS_URI: 'https://dev.ansc.lndo.site'
