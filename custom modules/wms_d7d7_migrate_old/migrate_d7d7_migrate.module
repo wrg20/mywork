@@ -1,0 +1,63 @@
+<?php
+/**
+ * @file migrate_d7d7_migrate.module
+ * On cron run the migration script to import and update new content
+ *
+ * @TODO: use hook cron queue to break up processes that take a long time
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function migrate_d7d7_migrate_cron() {
+
+   /*  // Short-running operation example, not using a queue:
+   *  // Delete all expired records since the last cron run.
+   *  $expires = variable_get('mymodule_cron_last_run', REQUEST_TIME);
+   *  db_delete('mymodule_table')
+   *    ->condition('expires', $expires, '>=')
+   *    ->execute();
+   *  variable_set('mymodule_cron_last_run', REQUEST_TIME);
+   *
+   *  // Long-running operation example, leveraging a queue:
+   *  // Fetch feeds from other sites.
+   *  $result = db_query('SELECT * FROM {aggregator_feed} WHERE checked + refresh < :time AND refresh != :never', array(
+   *    ':time' => REQUEST_TIME,
+   *    ':never' => AGGREGATOR_CLEAR_NEVER,
+   *  ));
+   *  $queue = DrupalQueue::get('aggregator_feeds');
+   *  foreach ($result as $feed) {
+   *    $queue->createItem($feed);
+   *  }
+   */
+
+  //   $migrate = array();
+  //   $migrate[0] = Migration::getInstance('profiles');
+  //   $migrate[1] = Migration::getInstance('events');
+  //   $migrate[2] = Migration::getInstance('news');
+
+  //   foreach ($migrate as $migration){
+  //   //$rollback = $migration->processRollback();
+  //   $update = $migration->prepareUpdate();
+  //   $result = $migration->processImport();
+  // }
+}
+
+
+
+//TODO: create a highwater mark to avoid using cron too often?? or queue the cron
+// function YOURMODULENAME_cron() {
+// $machine_name = "MACHINE NAME OF YOUR MIGRATION";
+// $last_run = variable_get('YOURMODULENAME_last_cron', 0);
+// $interval = variable_get('YOURMODULENAME_cron_interval', 60);//60 seconds
+// if(time() - $last_run > $interval)
+//   {
+//    variable_set('YOURMODULENAME_last_cron', time());//track the last_run time
+//    $migration = Migration::getInstance($machine_name);
+//    $result = $migration->processImport();
+//   }
+// }
+
+//TODO: instead of processRollback();
+//only rollback unprocessed nodes by selecting them and updating the database
+//to remove nids that no longer exist

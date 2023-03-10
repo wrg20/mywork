@@ -1,0 +1,22 @@
+name = "Migrate Shared Content D7D7"
+description = "Migrate Content from a Drupal 7 site to another Drupal 7 site , must set taxonomy id (field_category_tid) in node.inc file"
+package = "Migration"
+core = 7.x
+//hidden = TRUE
+
+dependencies[] = migrate
+dependencies[] = migrate_d2d
+
+files[] = migrate_d7d7_migrate.migrate.inc
+files[] = node.inc
+files[] = taxonomy.inc
+files[] = d7.inc
+files[] = file.inc
+files[] = d2d_taxonomy.inc
+
+; Information added by drupal.org packaging script on 2012-11-26
+version = "7.x-2.0"
+core = "7.x"
+project = "wms_d7d7_migrate"
+datestamp = "1353952687"
+

@@ -1,0 +1,199 @@
+<?php
+//Last edited by bill gutierrez 3/4/15
+/**
+ * This is example code for a Drupal 7 to Drupal 7 migration. This won't actually
+ * work without defining the referenced vocabularies, content types, and fields
+ * on each side.
+ */
+
+/**
+ * Implements hook_flush_caches().
+ */
+function migrate_d2d_shared_flush_caches() {
+  migrate_d2d_shared_register_migrations();
+}
+
+/**
+ * Register all D7->D7 migrations.
+ */
+function migrate_d2d_shared_register_migrations() {
+  /**
+   * Each migration being registered takes an array of arguments, some required
+   * and some optional. Start with the common arguments required by all - the
+   * source_connection (connection key, set up in settings.php, pointing to
+   * the Drupal 7 database) and source_version (major version of Drupal).
+   */
+  $common_arguments = array(
+    'source_connection' => 'shared_migrate',
+    'source_version' => 7,
+  );
+
+  // The description and the migration machine name are also required arguments,
+  // which will be unique for each migration you register.
+  $arguments = $common_arguments + array(
+    'description' => t('Migration of users from Drupal 7'),
+    'machine_name' => 'User',
+  );
+
+  // We just use the migrate_d2d D7 migration class as-is.
+  Migration::registerMigration('DrupalUser7Migration', $arguments['machine_name'],
+                               $arguments);
+
+  // For vocabulary migrations, source_vocabulary and destination_vocabulary are
+  // required arguments. Note that in Drupal 6 vocabularies did not have machine
+  // names, so we use the vocabulary ID to uniquely identify them.
+  $vocabulary_arguments = array(
+    array(
+      'description' => t('Migration of Shared Category terms from Drupal 7'),
+      'machine_name' => 'shared_category',
+      'source_vocabulary' => 'shared_category',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_category',
+    ),
+    array(
+      'description' => t('Migration of Shared Event Type terms from Drupal 7'),
+      'machine_name' => 'shared_event_type',
+      'source_vocabulary' => 'shared_event_type',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_event_type',
+    ),
+    array(
+      'description' => t('Migration of Shared Faculty Oversight terms from Drupal 7'),
+      'machine_name' => 'shared_faculty_oversight',
+      'source_vocabulary' => 'shared_faculty_oversight',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_faculty_oversight',
+    ),
+    array(
+      'description' => t('Migration of Shared Fund Category terms from Drupal 7'),
+      'machine_name' => 'shared_fund_category',
+      'source_vocabulary' => 'shared_fund_category',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_fund_category',
+    ),
+    array(
+      'description' => t('Migration of Shared News Category terms from Drupal 7'),
+      'machine_name' => 'shared_news_category',
+      'source_vocabulary' => 'shared_news_category',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_news_category',
+    ),
+    array(
+      'description' => t('Migration of Shared Profile Type terms from Drupal 7'),
+      'machine_name' => 'shared_profile_type',
+      'source_vocabulary' => 'shared_profile_type',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_profile_type',
+    ),
+    array(
+      'description' => t('Migration of Shared Scholarship Category terms from Drupal 7'),
+      'machine_name' => 'shared_scholarship_category',
+      'source_vocabulary' => 'shared_scholarship_category',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_scholarship_category',
+    ),
+    array(
+      'description' => t('Migration of Shared Scholarship Type terms from Drupal 7'),
+      'machine_name' => 'shared_scholarship_type',
+      'source_vocabulary' => 'shared_scholarship_type',  // D6 Vocabulary ID
+      'destination_vocabulary' => 'shared_scholarship_type',
+    ),
+  );
+
+  // Again, we're using the migrate_d2d class directly.
+  // The soft dependency says that while we don't have to run the user migration
+  // first, we want to make sure it's listed first so the vocubularies are
+  // listed right ahead of the node migrations.
+  $common_vocabulary_arguments = $common_arguments + array(
+    'class_name' => 'DrupalTerm7Migration',
+    'soft_dependencies' => array('User'),
+  );
+  foreach ($vocabulary_arguments as $arguments) {
+    $arguments += $common_vocabulary_arguments;
+    Migration::registerMigration($arguments['class_name'], $arguments['machine_name'],
+                                 $arguments);
+  }
+
+  // Node migrations - each has its own class derived from the migrate_d2d class,
+  // specifying its particular field mappings and transformations. source_type
+  // and destination_type are required arguments.
+  $node_arguments = array(
+/*    array(
+      'class_name' => 'ExampleImageMigration',
+      'description' => t('Migration of image nodes from Drupal 6'),
+      'machine_name' => 'Image',
+      'source_type' => 'image',
+      'destination_type' => 'image',
+    ),*/
+    array(
+      'class_name' => 'NewsArticleMigration',
+      'description' => t('Migration of shared news nodes from Drupal 7'),
+      'machine_name' => 'shared_news',
+      'source_type' => 'shared_news',
+      'destination_type' => 'hcd_news',
+    ),
+    array(
+      'class_name' => 'EventArticleMigration',
+      'description' => t('Migration of shared event nodes from Drupal 7'),
+      'machine_name' => 'shared_event',
+      'source_type' => 'shared_event',
+      'destination_type' => 'hcd_event',
+    ),
+
+  );
+  // Tell the node migrations where the users are coming from, so they can
+  // set up the dependency and resolve D7->D7 uids.
+  $common_node_arguments = $common_arguments + array(
+    'user_migration' => 'User',
+  );
+  foreach ($node_arguments as $arguments) {
+    $arguments = array_merge_recursive($arguments, $common_node_arguments);
+    Migration::registerMigration($arguments['class_name'], $arguments['machine_name'],
+                                 $arguments);
+  }
+
+  // Menu migrations -- same requirements as users
+/*  $menu_arguments = $common_arguments + array(
+    'description' => t('Migration of menus from Drupal 7'),
+    'machine_name' => 'Menu',
+  );
+*?
+  // We just use the migrate_d2d D7 migration class as-is.
+  // Not migrating any menu links - Bill Gutierrez 3/4/15
+ /* Migration::registerMigration('DrupalMenu7Migration', $menu_arguments['machine_name'],
+                              $menu_arguments);
+*?
+  // Menu links migrations -- basic requirements, plus must set up menu dependency
+/*  $menu_links_arguments = $common_arguments + array(
+    'description' => t('Migration of menu links from Drupal 7'),
+    'machine_name' => 'MenuLinks',
+    'menu_migration' => $menu_arguments['machine_name'],
+  );
+  Migration::registerMigration('DrupalMenuLinks7Migration', $menu_links_arguments['machine_name'],
+                               $menu_links_arguments);*/
+}
+
+/**
+ * Implements hook_migrate_api().
+ */
+function migrate_d2d_shared_migrate_api() {
+  $api = array(
+    'api' => 2,
+    /*'groups' => array(
+      'shared' => array(
+        'title' => t('Shared Migrations'),
+      ),
+      'taxonomy' => array(
+        'title' => t('Taxonomy'),
+      ),
+    ),
+    'migrations' => array(
+      'shared_news' => array(
+        'class_name' => 'NewsArticleMigration',
+        'group_name' => 'shared',
+      ),
+      'shared_event' => array(
+        'class_name' => 'EventArticleMigration',
+        'group_name' => 'shared',
+      ),
+      'shared_category' => array(
+        'class_name' => 'DrupalTerm7Migration',
+        'group_name' => 'taxonomy',
+      ),
+    ),*/
+  );
+  return $api;
+}
