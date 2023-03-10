@@ -8,3 +8,4 @@ A collection of my work
 * I have included a few of my custom migrations.  Some Drupal 7 to Drupal 7 and some Drupal 8 to Drupal 9
 * Subtheme folder with variable preprocessing with DrupalSettings (.theme file)
 * Leaflet.js javascript calling custom content type information => JSON endpoint
+* Varnish Cache setup file to allow for sub 100ms load times on static pages as recorded by Apache benchmark
