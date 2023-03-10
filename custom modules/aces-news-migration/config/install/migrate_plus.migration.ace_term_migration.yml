@@ -1,0 +1,20 @@
+id: ace_term_migration
+label: 'ACE term migration'
+migration_group: ace_taxonomy
+source:
+  plugin: custom_sql_query
+  key: taxonomy
+  keys:
+    - tid
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM taxonomy_term_field_data fd WHERE fd.vid='ace'"
+process:
+  tid: tid
+  name: name
+  status: status
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: ace
+dependencies:
+  enforced:
+    module:
+      - aces_news_migration

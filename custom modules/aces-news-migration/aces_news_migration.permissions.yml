@@ -1,0 +1,4 @@
+administer aces_news_migration configuration:
+  title: 'Administer aces_news_migration configuration'
+  description: 'Optional description.'
+  restrict access: true

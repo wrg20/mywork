@@ -1,0 +1,83 @@
+id: aces_news
+label: Migrate News from Drupal 8 to Drupal 9
+migration_group: aces_news
+migration_dependencies:
+  required:
+    - aces_news_term_migration
+dependencies:
+  enforced:
+    module:
+      - aces_news_migration
+source:
+  plugin: custom_sql_query
+  key: migrate
+  keys:
+    - nid
+  sql_query: "SELECT ln.nid, ln.type, ud.name, ud.mail, ud.uid, fi.field_news_featured_image_target_id AS fid, fi.entity_id, fi.field_news_featured_image_alt AS image_alt, fi.field_news_featured_image_title AS image_title, fm.uri, fd.title, fd.created, fd.changed, fd.status, nb.body_value, nb.body_summary, nb.body_format, fa.field_news_author_ref_target_id, ea.field_author_email_address_value, fs.field_news_subheading_value, GROUP_CONCAT(DISTINCT ot.tid) AS tid, nf.title as author FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id LEFT JOIN node__field_news_author_ref fa ON ln.nid = fa.entity_id LEFT JOIN node__field_author_email_address ea ON ea.entity_id = fa.field_news_author_ref_target_id LEFT JOIN node__field_news_category nc ON nc.entity_id = ln.nid LEFT JOIN node__field_news_subheading fs ON fs.entity_id = ln.nid LEFT JOIN users_field_data ud ON fd.uid = ud.uid INNER JOIN old_01b3d4taxonomy_term_field_data ot ON ot.tid = nc.field_news_category_target_id LEFT JOIN node_field_data nf ON nf.nid = fa.field_news_author_ref_target_id LEFT JOIN node__field_news_featured_image fi ON fi.entity_id = ln.nid LEFT JOIN file_managed fm ON fi.field_news_featured_image_target_id = fm.fid WHERE ln.type='news' GROUP BY ln.nid ORDER BY ln.nid ASC"
+  constants:
+    file_destination: 'public://news/'
+process:
+  nid:
+    plugin: default_value
+    default_value: news
+  title: title
+  field_if_subtitle: field_news_subheading_value
+  'body/value': body_value
+  'body/summary': body_summary
+  'body/format':
+    plugin: default_value
+    default_value: 'basic_html'
+  uid:
+    plugin: entity_generate
+    entity_type: user
+    source: name
+    bundle: user
+    value_key: name
+    ignore_case: true
+    values:
+      mail: mail
+  created:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'U'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
+    source: created
+  changed:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'U'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
+    source: changed
+  status:
+    plugin: get
+    source: status
+  field_if_date:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'Y-m-d\TH:i:s'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
+    source: created
+  field_tags:
+    plugin: explode
+    source: tid
+    delimiter: ','
+  field_if_author:
+    plugin: get
+    source: author
+  field_if_landscape_image/target_id:
+    plugin: migration_lookup
+    migration: aces_news_files
+    source: fid
+  field_if_landscape_image/alt: title
+  field_if_landscape_image/title: title
+destination:
+  plugin: entity:node
+  default_bundle: news
+
+#field_if_sponser:
+#field_if_related_people:
+#field_if_story_source:
+#user email
