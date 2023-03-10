@@ -1,0 +1,4 @@
+administer aces_core configuration:
+  title: 'Administer aces_core configuration'
+  description: 'Optional description.'
+  restrict access: true

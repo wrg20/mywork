@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ACES Core module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function aces_core_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function aces_core_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function aces_core_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $value = mt_rand(0, 100);
+    $requirements['aces_core_status'] = [
+      'title' => t('ACES Core status'),
+      'value' => t('ACES Core value: @value', ['@value' => $value]),
+      'severity' => $value > 50 ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
+    ];
+  }
+
+  return $requirements;
+}
+
+/**
+ * Install Conditional Fields
+ */
+function aces_core_update_9400() {
+  \Drupal::service('module_installer')->install(['conditional_fields']);
+}
+
+/**
+ * Install Rules and Scheduler modules
+ */
+function aces_core_update_9401() {
+  \Drupal::service('module_installer')->install(['rules']);
+  \Drupal::service('module_installer')->install(['scheduler']);
+}

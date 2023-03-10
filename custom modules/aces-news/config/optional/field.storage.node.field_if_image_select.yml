@@ -1,0 +1,27 @@
+uuid: aee97823-348a-4234-9208-a6831976d6fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_if_image_select
+field_name: field_if_image_select
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: landscape
+      label: Landscape
+    -
+      value: portrait
+      label: Portrait
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

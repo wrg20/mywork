@@ -1,0 +1,118 @@
+uuid: 01a859f4-0137-423d-82bd-e37c7f9dbe1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraph
+    - node.type.news
+    - paragraphs.paragraphs_type.accordion_content
+    - paragraphs.paragraphs_type.bb_content
+    - paragraphs.paragraphs_type.cards_content
+    - paragraphs.paragraphs_type.contact_content
+    - paragraphs.paragraphs_type.icon_row_content
+    - paragraphs.paragraphs_type.list_content
+    - paragraphs.paragraphs_type.rt_content
+  module:
+    - entity_reference_revisions
+id: node.news.field_paragraph
+field_name: field_paragraph
+entity_type: node
+bundle: news
+label: Paragraph
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordion_content: accordion_content
+      bb_content: bb_content
+      cards_content: cards_content
+      contact_content: contact_content
+      icon_row_content: icon_row_content
+      list_content: list_content
+      rt_content: rt_content
+    negate: 1
+    target_bundles_drag_drop:
+      acc_content:
+        weight: 26
+        enabled: true
+      accordion:
+        weight: -51
+        enabled: false
+      accordion_content:
+        weight: -50
+        enabled: true
+      bb:
+        weight: -49
+        enabled: false
+      bb_content:
+        weight: -48
+        enabled: true
+      block_reference:
+        weight: -47
+        enabled: false
+      cards:
+        weight: -46
+        enabled: false
+      cards_content:
+        weight: -45
+        enabled: true
+      contact:
+        weight: -44
+        enabled: false
+      contact_content:
+        weight: -43
+        enabled: true
+      cta:
+        weight: -42
+        enabled: false
+      cta_narrow:
+        weight: -41
+        enabled: false
+      feature_boxed:
+        weight: -40
+        enabled: false
+      feature_grouped:
+        weight: -39
+        enabled: false
+      feature_split:
+        weight: -38
+        enabled: false
+      feature_video:
+        weight: -37
+        enabled: false
+      from_library:
+        weight: -36
+        enabled: false
+      hero:
+        weight: -35
+        enabled: false
+      hero_section_page:
+        weight: -33
+        enabled: false
+      icon_row:
+        weight: -34
+        enabled: false
+      icon_row_content:
+        weight: -32
+        enabled: true
+      intro_home:
+        weight: -31
+        enabled: false
+      list:
+        weight: -30
+        enabled: false
+      list_content:
+        weight: -29
+        enabled: true
+      rt:
+        weight: -28
+        enabled: false
+      rt_content:
+        weight: -27
+        enabled: true
+field_type: entity_reference_revisions

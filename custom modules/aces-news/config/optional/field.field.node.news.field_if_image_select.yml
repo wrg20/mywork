@@ -1,0 +1,23 @@
+uuid: 0f48ad6e-1d71-4a0d-9297-7a31e4496b62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_if_image_select
+    - node.type.news
+  module:
+    - options
+id: node.news.field_if_image_select
+field_name: field_if_image_select
+entity_type: node
+bundle: news
+label: 'Image Select'
+description: 'Select the orientation of your image.'
+required: true
+translatable: false
+default_value:
+  -
+    value: landscape
+default_value_callback: ''
+settings: {  }
+field_type: list_string

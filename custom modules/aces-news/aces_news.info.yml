@@ -1,0 +1,11 @@
+name: ACES News Content Type
+type: module
+description: Create the ACES version of news
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: 1.0.0-alpha11
+dependencies:
+  - drupal:conditional_fields
+  - drupal:rules
+  - drupal:image_widget_crop

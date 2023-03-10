@@ -1,0 +1,212 @@
+uuid: dd7b1bf5-e900-4f9b-a588-853640b1be7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news.body
+    - field.field.node.news.field_if_author
+    - field.field.node.news.field_if_date
+    - field.field.node.news.field_if_image_caption
+    - field.field.node.news.field_if_image_select
+    - field.field.node.news.field_if_landscape_image
+    - field.field.node.news.field_if_meda_featured_image
+    - field.field.node.news.field_if_portrait_image
+    - field.field.node.news.field_if_related_people
+    - field.field.node.news.field_if_story_source
+    - field.field.node.news.field_if_subtitle
+    - field.field.node.news.field_paragraph
+    - field.field.node.news.field_tags
+    - image.style.thumbnail
+    - node.type.news
+  module:
+    - conditional_fields
+    - datetime
+    - image_widget_crop
+    - link
+    - path
+    - text
+id: node.news.default
+targetEntityType: node
+bundle: news
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_if_author:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_if_date: 'hidden:true'
+  field_if_image_caption:
+    type: string_textfield
+    weight: 16
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_if_image_select:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_if_landscape_image:
+    type: image_widget_crop
+    weight: 14
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - news_landscape
+      crop_types_required:
+        - news_landscape
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings:
+      conditional_fields:
+        b8948d16-108c-41e6-ab6f-76be24ecb94e:
+          entity_type: node
+          bundle: news
+          dependee: field_if_image_select
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: landscape
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_if_portrait_image:
+    type: image_widget_crop
+    weight: 15
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - news_portrait
+      crop_types_required:
+        - news_portrait
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings:
+      conditional_fields:
+        70d47c06-e6d7-4402-b3c5-790c3e809ae0:
+          entity_type: node
+          bundle: news
+          dependee: field_if_image_select
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: portrait
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_if_story_source:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_if_meda_featured_image: true
+  field_if_related_people: true
+  field_if_subtitle: true
+  field_paragraph: true

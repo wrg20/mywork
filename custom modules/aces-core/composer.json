@@ -1,0 +1,24 @@
+{
+    "name": "aces-wms/aces-core",
+    "description": "The College of ACES core module for all websites ",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0-or-later",
+    "support": {
+        "issues": "https://github.com/aces-wms/aces-core/issues",
+        "source": "https://github.com/aces-wms/aces-core"
+    },
+    "require": {
+        "drupal/conditional_fields": "^4.0@alpha",
+        "drupal/rules": "^3.0@alpha",
+        "drupal/scheduler": "^2.0@RC"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "wrg20",
+            "email": "wrg1025@gmail.com",
+            "homepage": "https://www.drupal.org/u/wrg20",
+            "role": "Maintainer"
+        }
+    ]
+}

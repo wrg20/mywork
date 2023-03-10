@@ -1,0 +1,23 @@
+uuid: 4f665514-c633-4fbf-8cb2-7fdee2db62d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_if_story_source
+    - node.type.news
+  module:
+    - link
+id: node.news.field_if_story_source
+field_name: field_if_story_source
+entity_type: node
+bundle: news
+label: 'Story Source(s)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link
