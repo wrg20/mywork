@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.funding_opportunity.body
+    - field.field.node.funding_opportunity.field_closing_date
+    - field.field.node.funding_opportunity.field_funding_type
+    - field.field.node.funding_opportunity.field_sponsor
+    - field.field.node.funding_opportunity.field_target_group
+    - field.field.node.funding_opportunity.field_url_for_details
+    - node.type.funding_opportunity
+  module:
+    - text
+    - user
+id: node.funding_opportunity.default
+targetEntityType: node
+bundle: funding_opportunity
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_url_for_details:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_closing_date: true
+  field_funding_type: true
+  field_sponsor: true
+  field_target_group: true
+  links: true

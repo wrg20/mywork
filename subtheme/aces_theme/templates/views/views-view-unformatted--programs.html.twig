@@ -1,0 +1,85 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{{ attach_library('aces_theme/program_explorer') }}
+
+<script> 
+  program = 'program_explorer';
+  filter_options = "{{ view.args[0] }}";
+</script>
+
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+
+<div>
+	<h3 role="status"></h3>		
+	<div>Results will take you to departmental sites for certificates, minors, and graduate level degrees.</div>	
+	<div class="ilfw--program-explorer--card-list table-responsive-md">
+
+		{% set looper = 0 %}
+		{% for row in rows %}
+
+			<div class="ilfw--program-explorer--card">
+				<div class="ilfw--program-explorer--card--container">
+					<div>
+						<div>
+							{% set imagestyle = {
+							  '#theme':      'image_style',
+							  '#style_name': 'program_image',
+							  '#uri':        view.result[loop.index - 1]._entity.fields.field_program_image.entity.fileuri,
+							  '#alt':        view.result[loop.index - 1]._entity.title[0].value,
+							  '#attributes': { class: 'ilfw--program-explorer--card--photo--container' },
+							} %}
+
+							{% if view.result[loop.index - 1]._entity.field_program_link.0.url.external %}
+								{% set internal_url = view.result[loop.index - 1]._entity.field_program_link.uri %}
+							{% else %}
+								{% set internal_url = path(view.result[loop.index - 1]._entity.field_program_link.0.url.routeName, view.result[loop.index - 1]._entity.field_program_link.0.url.routeParameters) %}
+							{% endif %}
+
+
+				    	<h3 class="ilfw--program-explorer--card--photo-container"><a href="{{ internal_url }}">{{ imagestyle }}<span class="ilfw--program-explorer--card--title">{{ view.result[loop.index - 1]._entity.title[0].value }}</span></a></h3>
+						</div>
+
+						<div class="ilfw--program-explorer--card--program-type">
+							{{ view.result[loop.index - 1]._entity.field_program_type[0].value }}
+						</div>
+
+						<div class="ilfw--program-explorer--card--body">
+							{{ view.result[loop.index - 1]._entity.body.value | raw }}
+						</div>
+					</div>
+
+					<div class="ilfw--program-explorer--card--program-format">
+						{% set format_number = 0 %}
+						{% for format in view.result[loop.index - 1]._entity.field_program_format %}
+							{% if format_number > 0 %}
+								and/or
+							{% endif %}
+							{% set format_number = 1 %}
+							{{ format.value }}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>

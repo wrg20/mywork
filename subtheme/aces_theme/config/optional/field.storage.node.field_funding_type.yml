@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_funding_type
+field_name: field_funding_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: grant
+      label: Grants
+    -
+      value: fellowship
+      label: Fellowships
+    -
+      value: award
+      label: Awards
+    -
+      value: internship
+      label: Internships
+    -
+      value: foundation
+      label: Foundation
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

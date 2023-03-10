@@ -1,0 +1,14 @@
+uuid: 2657afc0-5323-47af-ab34-cd16dbc6cc47
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.aces_content_manager
+  module:
+    - user
+id: user_add_role_action.aces_content_manager
+label: 'Add the ACES Content Manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: aces_content_manager

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_faculty_explorer_desc
+    - paragraphs.paragraphs_type.faculty_explorer
+id: paragraph.faculty_explorer.field_faculty_explorer_desc
+field_name: field_faculty_explorer_desc
+entity_type: paragraph
+bundle: faculty_explorer
+label: 'Faculty Explorer Desc'
+description: 'Descriptive text to appear at the top of the Faculty Explorer'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

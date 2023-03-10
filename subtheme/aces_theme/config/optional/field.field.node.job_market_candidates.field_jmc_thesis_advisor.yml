@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jmc_thesis_advisor
+    - node.type.job_market_candidates
+  module:
+    - link
+id: node.job_market_candidates.field_jmc_thesis_advisor
+field_name: field_jmc_thesis_advisor
+entity_type: node
+bundle: job_market_candidates
+label: 'Thesis Advisor'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_link
+    - node.type.programs
+  module:
+    - link
+id: node.programs.field_program_link
+field_name: field_program_link
+entity_type: node
+bundle: programs
+label: 'Program Link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

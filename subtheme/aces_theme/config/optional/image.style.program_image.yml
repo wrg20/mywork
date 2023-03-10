@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.program_explorer_card_image
+  module:
+    - crop
+name: program_image
+label: 'Program Image'
+effects:
+  26b4725c-fe41-41bb-9890-c9c58f856897:
+    uuid: 26b4725c-fe41-41bb-9890-c9c58f856897
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: program_explorer_card_image
+      automatic_crop_provider: null

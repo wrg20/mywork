@@ -1,0 +1,39 @@
+uuid: ab74a81b-f60b-4a8f-bac9-f9c1cbe403bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.galleria.field_galleria_album_id
+    - field.field.paragraph.galleria.field_galleria_background_color
+    - field.field.paragraph.galleria.field_galleria_title
+    - paragraphs.paragraphs_type.galleria
+id: paragraph.galleria.default
+targetEntityType: paragraph
+bundle: galleria
+mode: default
+content:
+  field_galleria_album_id:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_galleria_background_color:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_galleria_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

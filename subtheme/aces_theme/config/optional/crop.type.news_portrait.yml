@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: OWUN2p4BDFVvESa07RsnYKgEgtQcd4QdK9eOZ5Ce94Y
+label: 'News Portrait (3:4)'
+id: news_portrait
+description: ''
+aspect_ratio: '3:4'
+soft_limit_width: 375
+soft_limit_height: 500
+hard_limit_width: 225
+hard_limit_height: 300

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.aces_course_explorer
+id: paragraph.aces_course_explorer.default
+targetEntityType: paragraph
+bundle: aces_course_explorer
+mode: default
+content: {  }
+hidden:
+  created: true
+  status: true

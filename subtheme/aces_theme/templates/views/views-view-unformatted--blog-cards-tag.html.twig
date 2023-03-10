@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="news--aces__wrapper col-lg-3 col-md-4 col-sm-6">
+  {% for row in rows %}
+    {%
+      set row_classes = [
+      default_row_class ? 'views-row',
+      'news--aces'
+    ]
+    %}
+    {% set image_select = row.content['#row']._entity.field_blog_image_select.0.value %}
+    {% if image_select == 'landscape' %}
+      {% set image_uri = row.content['#row']._entity.field_blog_landscape_image.entity.uri.value %}
+      {% set image_orientation = 'news_landscape' %}
+      {% set image_title = row.content['#row']._entity.field_blog_landscape_image.0.title %}
+      {% set image_alt = row.content['#row']._entity.field_blog_landscape_image.0.alt %}
+    {% elseif image_select == 'portrait' %}
+      {% set image_uri = row.content['#row']._entity.field_blog_portrait_image.entity.uri.value %}
+      {% set image_orientation = 'news_portrait' %}
+      {% set image_title = '' %}
+      {% set image_alt = '' %}
+    {% else %}
+      {% set image_uri = 'public://news/ACES-News-Placeholder.jpg' %}
+      {% set image_orientation = 'news_landscape' %}
+      {% set image_title = 'ACES Image placeholder' %}
+      {% set image_alt = 'ACES Image placeholder' %}
+    {% endif %}
+    <div{{ row.attributes.addClass(row_classes) }}>
+      <div class="news--aces__img__wrapper">
+        {{ drupal_image(image_uri, image_orientation, {alt: image_alt|t, title: image_title|t}) }}
+      </div>
+      <div class="news--aces__content">
+        <div class="news--aces__author">
+          {{ row.content['#row']._entity.field_if_author.value }} | {{ row.content['#row']._entity.created.value|date('F j, Y') }}
+        </div>
+        {% if title %}
+          <h3>
+            <a class="news--aces__link" href="/node/{{ row.content['#row']._entity.nid.value }}">{{ title }}</a>
+          </h3>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

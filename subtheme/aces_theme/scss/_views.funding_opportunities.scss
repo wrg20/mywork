@@ -1,0 +1,69 @@
+.view-funding-types {
+  margin-top: 10px;
+
+  &__title {
+//    font-family: var(--il-montserrat);
+//    font-size: 20px !important;
+//    font-weight: 300 !important;
+    margin-bottom: .5rem !important;
+    padding: 10px 0 3px 0 !important;
+    margin-top: 25px !important;
+
+    a {
+      color: var(--il-link-color) !important;
+    }
+
+    a:visited {
+      color: var(--il-visited-link-color) !important;
+    }
+
+    a:hover {
+      color: var(--il-focused-link-color) !important;
+    }
+
+    a:focus {
+      color: var(--il-focused-link-color) !important;
+    }
+  }
+
+  &__container {
+    h2 {
+      margin-bottom: 40px !important;
+    }
+  }
+
+  &__funding-type {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  &__sponsor-label, &__target-group-label, &__closing-date-label {
+    font-weight: 600 !important;
+    // color: $color-ui-4;
+  }
+
+  &__page-title {
+    // font-size: 2rem;
+    // font-weight: 500;
+  }
+
+  &__body {
+    margin-bottom: 25px !important;
+
+    p {
+      font-size: 18px !important;
+      line-height: 1.5 !important;
+    }
+  }
+}
+
+.funding-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.il-content .paragraph--type--funding-opportunity {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}

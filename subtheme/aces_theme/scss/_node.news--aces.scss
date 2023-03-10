@@ -1,0 +1,238 @@
+.news--aces {
+  background-color: #f4f4f4;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+
+  &__container {
+    padding-bottom: 75px;
+
+    nav.pager {
+      width: 100%;
+      padding: 0 var(--il-content-margin);
+
+      ul.pager__items {
+        padding: 0;
+        width: 100%;
+      }
+    }
+    .views-element-container {
+      width: 100%;
+    }
+  }
+
+  //&:hover {
+  //  cursor: pointer;
+  //
+  //  a {
+  //    color: var(--il-altgeld);
+  //    text-decoration: underline;
+  //  }
+  //}
+
+  &__img__wrapper {
+    align-items: center;
+    background-color: #DEDEDE;
+    display: flex;
+    height: 175px;
+    justify-content: center;
+
+    @media (max-width: 575.98px) {
+      height: auto;
+      max-height: 300px;
+    }
+
+    img {
+      max-height: 175px;
+      width: auto;
+
+      @media (max-width: 575.98px) {
+        height: auto;
+        max-height: 300px;
+      }
+
+      &.image-style-news-landscape {
+
+      }
+
+      &.image-style-news-portrait {
+
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+
+    &.col-lg-6.col-md-6 {
+      .news--aces__img__wrapper {
+        height: 370px;
+      }
+      img {
+        max-height: 370px;
+      }
+    }
+    &.col-lg-4.col-md-4 {
+      .news--aces__img__wrapper {
+        height: 240px;
+      }
+      img {
+        max-height: 240px;
+      }
+    }
+    &.col-lg-3.col-md-3 {
+      .news--aces__img__wrapper {
+        height: 175px;
+      }
+      img {
+        max-height: 175px;
+      }
+    }
+  }
+
+  &__content {
+    padding: 20px 20px 60px;
+  }
+
+  &__title {
+    color: var(--il-blue);
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  &__author {
+    padding-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+
+    a {
+      color: var(--il-blue);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__link {
+    &:hover {
+      color: var(--il-altgeld);
+      text-decoration: underline;
+    }
+  }
+  &__button {
+    &--homepage {
+      text-align: center;
+    }
+  }
+
+  //news homepage block (top news item with body content included)
+  &__block {
+    margin: 0 auto;
+    width: 750px;
+
+    h3 {
+      color: var(--il-orange);
+      font-size: 35px;
+      font-weight: bold;
+      line-height: 43px;
+      text-align: center;
+      margin: 0;
+      padding: 0 0 40px 0;
+
+      a {
+        color: var(--il-orange);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--il-blue);
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .byline {
+      display: flex;
+      border-top: 1px solid #d8d8d8;
+      border-bottom: 1px solid #d8d8d8;
+      font-size: rem(20px);
+      line-height: rem(29px);
+      padding: 1.25rem 0;
+      color: var(--il-blue);
+      font-weight: 600;
+      margin: 0 0 1.875rem 0;
+    }
+
+    .byline-vr {
+      display: block;
+      width: 2px;
+      background-color: var(--il-orange);
+      margin: 0 1rem;
+    }
+
+    .source {
+      font-weight: 600;
+      font-style: oblique;
+      color: var(--il-blue);
+      padding: 1.125rem 0;
+    }
+
+    .tag-wrapper {
+      display: inline;
+      font-size: 20px;
+      font-style: oblique;
+      font-weight: 600;
+      color: var(--il-blue);
+      border: none;
+      padding: 0;
+      margin: 0 0 0 auto;
+
+      span {
+        &:after {
+          content: "/";
+          color: var(--il-blue);
+          display: inline-flex;
+        }
+
+        &:last-child {
+          &:after {
+            content: "";
+          }
+        }
+      }
+
+      a.tags {
+        color: var(--il-orange);
+
+        &:hover {
+          color: var(--il-blue);
+        }
+
+        &.field__item {
+          font-size: rem(20px);
+          line-height: rem(29px);
+          padding: 0 0.25rem;
+        }
+      }
+    }
+
+    .news--aces {
+
+      &__img__wrapper {
+        background-color: transparent;
+        height: auto;
+      }
+    }
+
+    img {
+      max-height: none;
+    }
+  }
+}

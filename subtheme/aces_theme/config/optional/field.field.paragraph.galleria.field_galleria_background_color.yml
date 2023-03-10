@@ -1,0 +1,23 @@
+uuid: 4260f993-8708-4154-a4ad-2b907428ed62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_galleria_background_color
+    - paragraphs.paragraphs_type.galleria
+  module:
+    - options
+id: paragraph.galleria.field_galleria_background_color
+field_name: field_galleria_background_color
+entity_type: paragraph
+bundle: galleria
+label: 'Galleria Background Color'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: White
+default_value_callback: ''
+settings: {  }
+field_type: list_string

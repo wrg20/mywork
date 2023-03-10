@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url_for_details
+    - node.type.funding_opportunity
+id: node.funding_opportunity.field_url_for_details
+field_name: field_url_for_details
+entity_type: node
+bundle: funding_opportunity
+label: 'URL for Details'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

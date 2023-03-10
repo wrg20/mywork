@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jmc_linkedin_profile
+    - node.type.job_market_candidates
+  module:
+    - link
+id: node.job_market_candidates.field_jmc_linkedin_profile
+field_name: field_jmc_linkedin_profile
+entity_type: node
+bundle: job_market_candidates
+label: 'LinkedIn Profile'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

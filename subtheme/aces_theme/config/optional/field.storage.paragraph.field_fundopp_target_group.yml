@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_fundopp_target_group
+field_name: field_fundopp_target_group
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Faculty
+      label: Faculty
+    -
+      value: Postdocs
+      label: Postdocs
+    -
+      value: grads
+      label: 'Graduate Students'
+    -
+      value: undergrads
+      label: 'Undergraduate Students'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

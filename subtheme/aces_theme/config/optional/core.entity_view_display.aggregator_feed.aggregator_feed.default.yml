@@ -1,0 +1,136 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - aggregator
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          bb3a1e8f-4d46-4f0a-90ad-72c47de2df08:
+            uuid: bb3a1e8f-4d46-4f0a-90ad-72c47de2df08
+            region: content
+            configuration:
+              id: 'extra_field_block:aggregator_feed:aggregator_feed:items'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          c079e42f-2fd9-4d9c-be7f-7321cb49215e:
+            uuid: c079e42f-2fd9-4d9c-be7f-7321cb49215e
+            region: content
+            configuration:
+              id: 'field_block:aggregator_feed:aggregator_feed:checked'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: timestamp_ago
+                label: inline
+                settings:
+                  future_format: '@interval hence'
+                  past_format: '@interval ago'
+                  granularity: 2
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          50bb6603-9771-4dcf-aff5-9ee8807c87d1:
+            uuid: 50bb6603-9771-4dcf-aff5-9ee8807c87d1
+            region: content
+            configuration:
+              id: 'extra_field_block:aggregator_feed:aggregator_feed:image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+          8c6f3032-88c2-4286-8cbc-fc4e3ed38aed:
+            uuid: 8c6f3032-88c2-4286-8cbc-fc4e3ed38aed
+            region: content
+            configuration:
+              id: 'extra_field_block:aggregator_feed:aggregator_feed:description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+          daff7467-22ca-44fc-9ad1-fb246b552ef2:
+            uuid: daff7467-22ca-44fc-9ad1-fb246b552ef2
+            region: content
+            configuration:
+              id: 'field_block:aggregator_feed:aggregator_feed:link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: uri_link
+                label: inline
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          3e7b6c33-1748-4d8b-b169-64ffa312a2df:
+            uuid: 3e7b6c33-1748-4d8b-b169-64ffa312a2df
+            region: content
+            configuration:
+              id: 'extra_field_block:aggregator_feed:aggregator_feed:feed_icon'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: RTDtRKHBQAxLXzLLfR4oBteItTh2Lou1GZpsDmiq0Qw
+id: aggregator_feed.aggregator_feed.default
+targetEntityType: aggregator_feed
+bundle: aggregator_feed
+mode: default
+content:
+  checked:
+    type: timestamp_ago
+    label: inline
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  description:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  feed_icon:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  image:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  items:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  link:
+    type: uri_link
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  more_link: true

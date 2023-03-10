@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_program_explorer_hide_topi
+field_name: field_program_explorer_hide_topi
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: All
+      label: All
+    -
+      value: Agriculture
+      label: Agriculture
+    -
+      value: Animals
+      label: Animals
+    -
+      value: 'Business, Economics, Policy and Law'
+      label: business-economics-policy-and-law
+    -
+      value: 'Data and Technology'
+      label: 'Data and Technology'
+    -
+      value: 'Food Systems'
+      label: 'Food Systems'
+    -
+      value: 'Health and Nutrition'
+      label: 'Health and Nutrition'
+    -
+      value: 'Leadership, Communication and Education'
+      label: 'Leadership, Communication and Education'
+    -
+      value: 'Natural Resources and Conservation'
+      label: 'Natural Resources and Conservation'
+    -
+      value: 'People, Communities, and Families'
+      label: 'People, Communities, and Families'
+    -
+      value: 'Plants and Crops'
+      label: 'Plants and Crops'
+    -
+      value: 'Sustainability and Environmental Stewardship'
+      label: 'Sustainability and Environmental Stewardship'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

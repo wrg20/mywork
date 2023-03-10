@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_program_topic
+field_name: field_program_topic
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Agriculture
+      label: Agriculture
+    -
+      value: Animals
+      label: Animals
+    -
+      value: 'Business, Economics, Policy and Law'
+      label: 'Business, Economics, Policy and Law'
+    -
+      value: 'Data and Technology'
+      label: 'Data and Technology'
+    -
+      value: 'Food Systems'
+      label: 'Food Systems'
+    -
+      value: 'Health and Nutrition'
+      label: 'Health and Nutrition'
+    -
+      value: 'Leadership, Communication and Education'
+      label: 'Leadership, Communication and Education'
+    -
+      value: 'Natural Resources and Conservation'
+      label: 'Natural Resources and Conservation'
+    -
+      value: 'People, Communities, and Families'
+      label: 'People, Communities, and Families'
+    -
+      value: 'Plants and Crops'
+      label: 'Plants and Crops'
+    -
+      value: 'Sustainability and Environmental Stewardship'
+      label: 'Sustainability and Environmental Stewardship'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jmc_phone
+    - node.type.job_market_candidates
+  module:
+    - telephone
+id: node.job_market_candidates.field_jmc_phone
+field_name: field_jmc_phone
+entity_type: node
+bundle: job_market_candidates
+label: Phone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

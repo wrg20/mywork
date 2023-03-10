@@ -1,0 +1,19 @@
+uuid: 423e1dc0-a60e-4c60-8b0d-6272915d2def
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_galleria_title
+    - paragraphs.paragraphs_type.galleria
+id: paragraph.galleria.field_galleria_title
+field_name: field_galleria_title
+entity_type: paragraph
+bundle: galleria
+label: 'Galleria Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

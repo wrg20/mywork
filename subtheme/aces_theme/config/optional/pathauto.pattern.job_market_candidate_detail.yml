@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: job_market_candidate_detail
+label: 'Job Market Candidate Detail'
+type: 'canonical_entities:node'
+pattern: '/academics/graduate-degrees/job-market-candidates/[node:field_jmc_first_name]-[node:title]'
+selection_criteria:
+  154d7a08-9c8f-4566-958e-10d01aab6588:
+    id: node_type
+    bundles:
+      job_market_candidates: job_market_candidates
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 154d7a08-9c8f-4566-958e-10d01aab6588
+selection_logic: and
+weight: -5
+relationships: {  }

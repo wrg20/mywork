@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jmc_personal_website
+    - node.type.job_market_candidates
+  module:
+    - link
+id: node.job_market_candidates.field_jmc_personal_website
+field_name: field_jmc_personal_website
+entity_type: node
+bundle: job_market_candidates
+label: 'Personal Website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

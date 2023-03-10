@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: funding_opportunities
+label: 'Funding Opportunities'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:root]/[node:content-type:name]/[node:title]'
+selection_criteria:
+  60c45965-1a2e-43f5-b37c-3a96fdff9988:
+    id: node_type
+    bundles:
+      funding_opportunity: funding_opportunity
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 60c45965-1a2e-43f5-b37c-3a96fdff9988
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.job_market_candidates
+id: node.job_market_candidates.title
+field_name: title
+entity_type: node
+bundle: job_market_candidates
+label: 'Last Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

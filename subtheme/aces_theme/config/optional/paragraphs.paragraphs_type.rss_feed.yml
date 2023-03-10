@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: rss_feed
+label: 'RSS Feed'
+icon_uuid: null
+icon_default: null
+description: 'Take a RSS Feed URL and display the contents'
+behavior_plugins: {  }

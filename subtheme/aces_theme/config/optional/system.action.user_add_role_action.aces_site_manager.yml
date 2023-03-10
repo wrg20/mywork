@@ -1,0 +1,14 @@
+uuid: 3502d1b8-de3f-4d88-bf45-1f62c2ecdc01
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.aces_site_manager
+  module:
+    - user
+id: user_add_role_action.aces_site_manager
+label: 'Add the ACES Site Manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: aces_site_manager

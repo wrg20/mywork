@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: aces_course_explorer
+label: 'Course Explorer'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

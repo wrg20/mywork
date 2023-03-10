@@ -1,0 +1,242 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job_market_candidates.body
+    - field.field.node.job_market_candidates.field_jmc_anticipated_completion
+    - field.field.node.job_market_candidates.field_jmc_cv_link
+    - field.field.node.job_market_candidates.field_jmc_degree_status
+    - field.field.node.job_market_candidates.field_jmc_email
+    - field.field.node.job_market_candidates.field_jmc_first_name
+    - field.field.node.job_market_candidates.field_jmc_google_scholar_link
+    - field.field.node.job_market_candidates.field_jmc_job_market_paper_link
+    - field.field.node.job_market_candidates.field_jmc_linkedin_profile
+    - field.field.node.job_market_candidates.field_jmc_personal_website
+    - field.field.node.job_market_candidates.field_jmc_phone
+    - field.field.node.job_market_candidates.field_jmc_photo
+    - field.field.node.job_market_candidates.field_jmc_publications
+    - field.field.node.job_market_candidates.field_jmc_references
+    - field.field.node.job_market_candidates.field_jmc_specialization
+    - field.field.node.job_market_candidates.field_jmc_teaching_experience
+    - field.field.node.job_market_candidates.field_jmc_thesis_advisor
+    - field.field.node.job_market_candidates.field_jmc_thesis_title
+    - image.style.personal_photo_233x300_
+    - node.type.job_market_candidates
+  module:
+    - image_widget_crop
+    - link
+    - path
+    - telephone
+    - text
+id: node.job_market_candidates.default
+targetEntityType: node
+bundle: job_market_candidates
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 13
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_jmc_anticipated_completion:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_jmc_cv_link:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_degree_status:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_jmc_email:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_jmc_first_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_jmc_google_scholar_link:
+    weight: 11
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_job_market_paper_link:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_linkedin_profile:
+    weight: 12
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_personal_website:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_phone:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_jmc_photo:
+    weight: 2
+    settings:
+      show_default_crop: true
+      warn_multiple_usages: true
+      preview_image_style: personal_photo_233x300_
+      crop_preview_image_style: personal_photo_233x300_
+      crop_list:
+        - 7_9_ratio
+      progress_indicator: throbber
+      crop_types_required: {  }
+      show_crop_area: false
+    third_party_settings: {  }
+    type: image_widget_crop
+    region: content
+  field_jmc_publications:
+    weight: 17
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_jmc_references:
+    weight: 18
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_jmc_specialization:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_jmc_teaching_experience:
+    weight: 16
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_jmc_thesis_advisor:
+    weight: 15
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_jmc_thesis_title:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  path:
+    type: path
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 23
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 19
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 22
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 25
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

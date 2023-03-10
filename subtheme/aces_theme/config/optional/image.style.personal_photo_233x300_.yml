@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.7_9_ratio
+  module:
+    - crop
+name: personal_photo_233x300_
+label: 'Personal Photo (233x300)'
+effects:
+  46f4cb10-980f-4f66-9b75-928ca28a854b:
+    uuid: 46f4cb10-980f-4f66-9b75-928ca28a854b
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: 7_9_ratio

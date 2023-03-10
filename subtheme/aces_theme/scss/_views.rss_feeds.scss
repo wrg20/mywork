@@ -1,0 +1,17 @@
+.rss-feed {
+	margin-bottom: 75px;
+}
+
+.aggregator-item {
+	
+	.field--name-fid, .field--name-timestamp {
+		display: none;
+	}
+
+	.item-description {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+}

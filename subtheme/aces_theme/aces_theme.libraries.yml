@@ -1,0 +1,44 @@
+global-styling:
+  css:
+    theme:
+      css/aces.css: {}
+  js:
+    js/side-nav-title-append.js: {}
+    js/what_we_do.js: {}
+directory:
+  js:
+    js/directory.js: { attributes: { async: true } }
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+galleria:
+  js:
+    css/galleria/galleria.min.js: { minified: true }
+    css/galleria/plugins/flickr/galleria.flickr.js: { attributes: { async: true } }
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+galleria--display:
+  js:
+    css/galleria/galleria--display.js: {}
+  dependencies:
+    - core/jquery
+course-explorer:
+  js:
+    js/course-explorer.js: { attributes: { async: true } }
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+faculty_explorer:
+  js:
+    js/faculty_explorer.js: {}
+  dependencies:
+    - core/jquery
+program_explorer:
+  js:
+    js/program_explorer.js: {}
+  dependencies:
+    - core/jquery
+aces-news:
+  js:
+    js/aces-news.js: { minified: true }

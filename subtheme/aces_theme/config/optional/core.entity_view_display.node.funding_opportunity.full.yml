@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.funding_opportunity.body
+    - field.field.node.funding_opportunity.field_closing_date
+    - field.field.node.funding_opportunity.field_funding_type
+    - field.field.node.funding_opportunity.field_sponsor
+    - field.field.node.funding_opportunity.field_target_group
+    - field.field.node.funding_opportunity.field_url_for_details
+    - node.type.funding_opportunity
+  module:
+    - user
+id: node.funding_opportunity.full
+targetEntityType: node
+bundle: funding_opportunity
+mode: full
+content: {  }
+hidden:
+  body: true
+  field_closing_date: true
+  field_funding_type: true
+  field_sponsor: true
+  field_target_group: true
+  field_url_for_details: true
+  links: true

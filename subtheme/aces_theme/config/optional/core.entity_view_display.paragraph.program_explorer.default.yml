@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.program_explorer.field_program_explorer_descripti
+    - field.field.paragraph.program_explorer.field_program_explorer_hide_topi
+    - field.field.paragraph.program_explorer.field_program_explorer_hide_type
+    - field.field.paragraph.program_explorer.field_program_explorer_title
+    - field.field.paragraph.program_explorer.field_program_explorer_type
+    - field.field.paragraph.program_explorer.field_program_topic_entity
+    - paragraphs.paragraphs_type.program_explorer
+  module:
+    - options
+    - text
+id: paragraph.program_explorer.default
+targetEntityType: paragraph
+bundle: program_explorer
+mode: default
+content:
+  field_program_explorer_descripti:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_program_explorer_hide_topi:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_program_explorer_hide_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_program_explorer_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_program_explorer_type:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_program_topic_entity:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

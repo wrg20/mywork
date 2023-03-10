@@ -1,0 +1,37 @@
+// Include parent theme with all things Bootstrap for full override.
+// Relative path to this styles.scss file.
+// Example: @import "../../../../../themes/contrib/bootstrap4/scss/style";
+
+// Custom Functions
+@import "../../../contrib/illinois_framework_theme/scss/illinois-framework/functions/px2rem";
+@import "../../../contrib/illinois_framework_theme/scss/illinois-framework/utilities/max-width";
+
+// Custom Variables
+@import '../../../contrib/illinois_framework_theme/scss/illinois-framework/variables';
+
+
+// Paragraphs
+@import "paragraphs.faculty-explorer";
+@import "paragraphs.program-explorer";
+
+// Views
+@import "views.directory";
+@import "views.courses";
+@import "views.rss_feeds";
+@import "views.funding_opportunities";
+@import "views.news--tags";
+
+// Blocks
+@import "block.news--homepage";
+
+// Nodes
+@import "node.career-possibilities";
+@import "node.internships";
+@import "node.job-market-candidates";
+@import "node.wwdwim";
+@import "node.news";
+@import "node.news--aces";
+@import "node.blog";
+
+// Component Overrides
+@import "component.hero--overrides";

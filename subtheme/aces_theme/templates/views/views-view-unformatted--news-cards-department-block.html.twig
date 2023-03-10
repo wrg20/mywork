@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% for row in rows %}
+  {%
+    set row_classes = [
+    default_row_class ? 'views-row',
+    'news--aces__block'
+  ]
+  %}
+  {% set author = row.content['#row']._entity.field_if_author.value %}
+  {% set date = row.content['#row']._entity.created.value|date('F j, Y') %}
+  {% set body = row.content['#row']._entity.body.0.value %}
+  {% if row.content['#row']._entity.body.0.summary != ""  %}
+    {% set body = row.content['#row']._entity.body.0.summary %}
+  {% else %}
+    {% set body = row.content['#row']._entity.body.0.value|truncate(600, true) %}
+  {% endif %}
+  {% set image_select = row.content['#row']._entity.field_if_image_select.0.value %}
+  {% if image_select == 'landscape' %}
+    {% set image_uri = row.content['#row']._entity.field_if_landscape_image.entity.uri.value %}
+    {% set image_orientation = 'news_landscape' %}
+    {% set image_title = row.content['#row']._entity.field_if_landscape_image.0.title %}
+    {% set image_alt = row.content['#row']._entity.field_if_landscape_image.0.alt %}
+  {% elseif image_select == 'portrait' %}
+    {% set image_uri = row.content['#row']._entity.field_if_portrait_image.entity.uri.value %}
+    {% set image_orientation = 'news_portrait' %}
+    {% set image_title = '' %}
+    {% set image_alt = '' %}
+  {% else %}
+    {% set image_uri = 'public://news/ACES-News-Placeholder.jpg' %}
+    {% set image_orientation = 'news_landscape' %}
+    {% set image_title = 'ACES Image placeholder' %}
+    {% set image_alt = 'ACES Image placeholder' %}
+  {% endif %}
+<div class="news--aces__wrapper col-lg-8 offset-lg-2 col-md-12 col-sm-12">
+  <div{{ row.attributes.addClass(row_classes) }}>
+    {% if title %}
+      <h3>
+        <a href="/node/{{ row.content['#row']._entity.nid.value }}">{{ title }}</a>
+      </h3>
+    {% endif %}
+    <div class="byline">
+      {% if date %}
+        <div class="date">{{ date }}</div>
+      {% endif %}
+      {% if author and date %}
+        <div class="byline-vr"></div>
+      {% endif %}
+      {% if author %}
+        <div class="author">{{ author }}</div>
+      {% endif %}
+      {% if row.content['#row']._entity.field_tags %}
+        <div class="tag-wrapper">
+          {% for item in row.content['#row']._entity.field_tags %}
+            <span>
+              <a class="tags field__item" href="/taxonomy/term/{{ view.result[0]._entity.field_tags[loop.index0].entity.tid.value }}">{{ view.result[0]._entity.field_tags[loop.index0].entity.name.value }}</a>
+            </span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="news--aces__img__wrapper">
+      {{ drupal_image(image_uri, image_orientation, {alt: image_alt|t, title: image_title|t}) }}
+    </div>
+    <div class="news--aces__content">
+      <div class="news--aces__body">
+        {{ body|raw }}
+      </div>
+      <div class="news--aces__readmore"><a href="/node/{{ row.content['#row']._entity.nid.value }}">Read more...</a></div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+

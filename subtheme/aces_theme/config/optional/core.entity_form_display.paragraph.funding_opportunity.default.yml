@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.funding_opportunity.field_funding_opportunity_title
+    - field.field.paragraph.funding_opportunity.field_fundopp_target_group
+    - paragraphs.paragraphs_type.funding_opportunity
+id: paragraph.funding_opportunity.default
+targetEntityType: paragraph
+bundle: funding_opportunity
+mode: default
+content:
+  field_funding_opportunity_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_fundopp_target_group:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

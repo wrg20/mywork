@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_program_explorer_hide_type
+    - paragraphs.paragraphs_type.program_explorer
+  module:
+    - options
+id: paragraph.program_explorer.field_program_explorer_hide_type
+field_name: field_program_explorer_hide_type
+entity_type: paragraph
+bundle: program_explorer
+label: 'Program Explorer Hide Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

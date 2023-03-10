@@ -1,0 +1,14 @@
+uuid: 1cfe8262-75ce-4ff8-85ff-c1fe5d958f63
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.aces_site_administrator
+  module:
+    - user
+id: user_add_role_action.aces_site_administrator
+label: 'Add the ACES Site Administrator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: aces_site_administrator

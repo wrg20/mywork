@@ -1,0 +1,50 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_program_department
+field_name: field_program_department
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Agricultural and Biological Engineering'
+      label: 'Agricultural and Biological Engineering'
+    -
+      value: 'Agricultural and Consumer Economics'
+      label: 'Agricultural and Consumer Economics'
+    -
+      value: 'Agricultural, Consumer & Environmental Sciences'
+      label: 'Agricultural, Consumer & Environmental Sciences'
+    -
+      value: 'Agricultural Leadership, Education, and Communications'
+      label: 'Agricultural Leadership, Education, and Communications'
+    -
+      value: 'Animal Sciences'
+      label: 'Animal Sciences'
+    -
+      value: 'Crop Sciences'
+      label: 'Crop Sciences'
+    -
+      value: 'Food Science and Human Nutrition'
+      label: 'Food Science and Human Nutrition'
+    -
+      value: 'Human Development and Family Studies'
+      label: 'Human Development and Family Studies'
+    -
+      value: 'Natural Resources and Environmental Sciences'
+      label: 'Natural Resources and Environmental Sciences'
+    -
+      value: 'Nutritional Sciences'
+      label: 'Nutritional Sciences'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

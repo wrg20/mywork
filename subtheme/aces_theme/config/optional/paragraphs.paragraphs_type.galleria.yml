@@ -1,0 +1,10 @@
+uuid: ddc2749e-b57b-4cf2-96bd-799d993e8169
+langcode: en
+status: true
+dependencies: {  }
+id: galleria
+label: Galleria
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

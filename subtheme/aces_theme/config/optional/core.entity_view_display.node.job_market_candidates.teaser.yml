@@ -1,0 +1,84 @@
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.job_market_candidates.body
+    - field.field.node.job_market_candidates.field_jmc_anticipated_completion
+    - field.field.node.job_market_candidates.field_jmc_cv_link
+    - field.field.node.job_market_candidates.field_jmc_degree_status
+    - field.field.node.job_market_candidates.field_jmc_email
+    - field.field.node.job_market_candidates.field_jmc_first_name
+    - field.field.node.job_market_candidates.field_jmc_google_scholar_link
+    - field.field.node.job_market_candidates.field_jmc_job_market_paper_link
+    - field.field.node.job_market_candidates.field_jmc_linkedin_profile
+    - field.field.node.job_market_candidates.field_jmc_personal_website
+    - field.field.node.job_market_candidates.field_jmc_phone
+    - field.field.node.job_market_candidates.field_jmc_photo
+    - field.field.node.job_market_candidates.field_jmc_publications
+    - field.field.node.job_market_candidates.field_jmc_references
+    - field.field.node.job_market_candidates.field_jmc_specialization
+    - field.field.node.job_market_candidates.field_jmc_teaching_experience
+    - field.field.node.job_market_candidates.field_jmc_thesis_advisor
+    - field.field.node.job_market_candidates.field_jmc_thesis_title
+    - node.type.job_market_candidates
+  module:
+    - link
+    - user
+id: node.job_market_candidates.teaser
+targetEntityType: node
+bundle: job_market_candidates
+mode: teaser
+content:
+  field_jmc_cv_link:
+    type: link
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_jmc_first_name:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_jmc_specialization:
+    type: string
+    weight: 7
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_jmc_thesis_title:
+    type: string
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_jmc_anticipated_completion: true
+  field_jmc_degree_status: true
+  field_jmc_email: true
+  field_jmc_google_scholar_link: true
+  field_jmc_job_market_paper_link: true
+  field_jmc_linkedin_profile: true
+  field_jmc_personal_website: true
+  field_jmc_phone: true
+  field_jmc_photo: true
+  field_jmc_publications: true
+  field_jmc_references: true
+  field_jmc_teaching_experience: true
+  field_jmc_thesis_advisor: true
+  links: true

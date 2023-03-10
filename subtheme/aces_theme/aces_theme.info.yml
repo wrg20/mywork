@@ -1,0 +1,33 @@
+name: 'ACES Theme'
+type: theme
+description: 'College of ACES Theme'
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: illinois_framework_theme
+version: '2.0.35'
+dependencies:
+  - drupal:conditional_fields
+  - drupal:image_widget_crop
+  - drupal:better_exposed_filters
+# Defines libraries group in which we can add css/js.
+libraries:
+  - aces_theme/global-styling
+  - aces_theme/directory
+  - aces_theme/faculty_explorer
+  - aces_theme/course-explorer
+  - aces_theme/galleria
+  - aces_theme/program-explorer
+
+# Regions copied from base theme
+regions:
+  header: Header
+  nav_main: 'Main navigation region'
+  breadcrumb: Breadcrumbs
+  highlighted: Highlighted
+  help: Help Information
+  tabs: 'Tabs'
+  content: 'Main content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer
+  hidden: 'Hidden region for referenced blocks'

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: 7_9_ratio
+label: '7:9 Ratio'
+description: ''
+aspect_ratio: '7:9'
+soft_limit_width: 699
+soft_limit_height: 900
+hard_limit_width: 233
+hard_limit_height: 300

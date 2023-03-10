@@ -1,0 +1,40 @@
+uuid: 4150831e-fae9-44f7-a1a4-4032e4f5fe4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.galleria.field_galleria_album_id
+    - field.field.paragraph.galleria.field_galleria_background_color
+    - field.field.paragraph.galleria.field_galleria_title
+    - paragraphs.paragraphs_type.galleria
+  module:
+    - options
+id: paragraph.galleria.default
+targetEntityType: paragraph
+bundle: galleria
+mode: default
+content:
+  field_galleria_album_id:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_galleria_background_color:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_galleria_title:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+<?php
+/**
+* Implements hook_theme_suggestions_HOOK_alter for blocks.
+*/
+function aces_theme_suggestions_block_alter(&$suggestions, $variables) {
+
+  // Load theme suggestions for blocks from parent theme.
+  foreach ($suggestions as &$suggestion) {
+    $suggestion = str_replace('aces_theme', 'illinois_framework_theme', $suggestion);
+  }
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+use Drupal\Core\Site\Settings;
+function aces_theme_preprocess(&$variables) {
+  $variables['#attached']['drupalSettings']['galleria']['aces_flickr_api'] = Settings::get('aces_flickr_api', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+  $variables['#attached']['drupalSettings']['directory']['aces_unit_id'] = Settings::get('aces_unit_id', '0000');
+  $variables['#attached']['drupalSettings']['courses']['aces_course_code'] = Settings::get('aces_course_code', '');
+}

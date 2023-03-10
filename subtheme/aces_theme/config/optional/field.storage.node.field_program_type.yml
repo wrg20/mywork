@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_program_type
+field_name: field_program_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Undergraduate Major'
+      label: 'Undergraduate Major'
+    -
+      value: 'Undergraduate Minor'
+      label: 'Undergraduate Minor'
+    -
+      value: 'Master''s Degree'
+      label: 'Master''s Degree'
+    -
+      value: 'Doctoral Degree'
+      label: 'Doctoral Degree'
+    -
+      value: 'Undergraduate Certificate'
+      label: 'Undergraduate Certificate'
+    -
+      value: 'Graduate Certificate'
+      label: 'Graduate Certificate'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+.paragraph--type--hero {
+  li {
+    a.il-button.il-blue {
+      &:visited {
+        color: white !important;
+
+        &:hover,
+        &:focus {
+          color: var(--il-blue) !important;
+        }
+      }
+    }
+  }
+}

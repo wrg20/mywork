@@ -1,0 +1,21 @@
+uuid: 00bdd297-e002-4b93-b1ee-68b8f8d95a18
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_galleria_album_id
+field_name: field_galleria_album_id
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

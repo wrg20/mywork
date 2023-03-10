@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_faculty_explorer_type
+    - paragraphs.paragraphs_type.faculty_explorer
+  module:
+    - options
+id: paragraph.faculty_explorer.field_faculty_explorer_type
+field_name: field_faculty_explorer_type
+entity_type: paragraph
+bundle: faculty_explorer
+label: 'Faculty Explorer Type'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Department Explorer'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

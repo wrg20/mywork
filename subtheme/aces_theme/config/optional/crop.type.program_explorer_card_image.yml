@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+label: 'Program Explorer Card Image'
+id: program_explorer_card_image
+description: 'The photo that goes at the top of the card in Program Explorer'
+aspect_ratio: '2:1'
+soft_limit_width: 240
+soft_limit_height: 120
+hard_limit_width: 200
+hard_limit_height: 100

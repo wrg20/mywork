@@ -1,0 +1,14 @@
+uuid: 4141ed46-a29c-457f-b7d9-289cd6cf5909
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.aces_site_manager
+  module:
+    - user
+id: user_remove_role_action.aces_site_manager
+label: 'Remove the ACES Site Manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: aces_site_manager

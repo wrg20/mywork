@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: program_explorer
+label: 'Program Explorer'
+icon_uuid: null
+icon_default: null
+description: 'Display different versions of Program Explorer as a paragraph'
+behavior_plugins: {  }

@@ -1,0 +1,94 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A CSS-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set arguments = url('<current>') | render | render | split('/') %} 
+
+{% set course_name = '' %}
+{% set year = '' %}
+{% set semester = '' %}
+
+{% for argument in arguments %}
+  {% if argument == 'courses' %}
+    {% set next_arg = 'course_name' %}
+  {% elseif next_arg == 'course_name' %}
+    {% set course_name = argument %}
+    {% set next_arg = 'year' %}
+  {% elseif next_arg == 'year' %}
+    {% set year = argument %}
+    {% set next_arg = 'semester' %}
+  {% elseif next_arg == 'semester' %}
+    {% set semester = argument %}
+  {% endif %}
+{% endfor %}
+
+<!--Course: {{ course_name }}<br>
+Year: {{ year }}<br>
+Semester: {{ semester }}<br>
+-->
+
+<script> 
+  view = 'detail';
+  course_name = "{{ course_name }}";
+  year = "{{ year }}";
+  semester = "{{ semester }}";
+</script>
+
+{{ attach_library('aces_theme/course-explorer') }}
+
+{%
+  set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id, 'fixed-width'
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+
+  {% if header %}
+    <header>
+      {{ header }}
+    </header>
+  {% endif %}
+
+  <div class="row">
+    <div class="course-output col-lg-12 col-md-12 col-sm-12">
+    </div>
+  </div>
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+</div>

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_program_explorer_type
+    - paragraphs.paragraphs_type.program_explorer
+  module:
+    - options
+id: paragraph.program_explorer.field_program_explorer_type
+field_name: field_program_explorer_type
+entity_type: paragraph
+bundle: program_explorer
+label: 'Program Explorer Type'
+description: 'Select the version of Program Explorer you want to display.'
+required: true
+translatable: false
+default_value:
+  -
+    value: full
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.faculty_explorer.field_faculty_exp_layer_width
+    - field.field.paragraph.faculty_explorer.field_faculty_explorer_bg_color
+    - field.field.paragraph.faculty_explorer.field_faculty_explorer_def_image
+    - field.field.paragraph.faculty_explorer.field_faculty_explorer_desc
+    - field.field.paragraph.faculty_explorer.field_faculty_explorer_title
+    - field.field.paragraph.faculty_explorer.field_faculty_explorer_type
+    - paragraphs.paragraphs_type.faculty_explorer
+  module:
+    - image
+    - options
+id: paragraph.faculty_explorer.default
+targetEntityType: paragraph
+bundle: faculty_explorer
+mode: default
+content:
+  field_faculty_exp_layer_width:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_faculty_explorer_bg_color:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_faculty_explorer_def_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_faculty_explorer_desc:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_faculty_explorer_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_faculty_explorer_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

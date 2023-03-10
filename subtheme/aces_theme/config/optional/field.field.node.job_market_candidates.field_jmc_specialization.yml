@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jmc_specialization
+    - node.type.job_market_candidates
+id: node.job_market_candidates.field_jmc_specialization
+field_name: field_jmc_specialization
+entity_type: node
+bundle: job_market_candidates
+label: Specialization
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

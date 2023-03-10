@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ftxFK_Olo02sWf-wMPNW1Gk2R_KHnn4cAVe_u_-ZIis
+label: 'News Landscape (3:2)'
+id: news_landscape
+description: ''
+aspect_ratio: '3:2'
+soft_limit_width: 750
+soft_limit_height: 500
+hard_limit_width: 240
+hard_limit_height: 160

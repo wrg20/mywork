@@ -1,0 +1,158 @@
+.aces--jmc {
+  &--header {
+    &--subheader {
+      margin-top: 0;
+    }
+  }
+
+  &--footer {
+    &--job-title {
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+  }
+
+  &--container {
+    display: flex;
+
+    h2 {
+      color: var(--il-orange);
+      margin-bottom: rem(5px);
+    }
+  }
+  &--content {
+    flex: 1;
+    margin-bottom: rem(75px);
+
+    h1 {
+//      margin-top: 0;
+    }
+  }
+
+  &--photo {
+    width: 233px;
+
+    &-container {
+      flex: 0 0 233px;
+      margin-top: rem(30px);
+    }
+  }
+
+  &--degree {
+    font-weight: normal;
+    margin: rem(20px) 0 rem(10px) 0;
+  }
+
+  &--field {
+    margin-top: rem(15px);
+    margin-bottom: rem(15px);
+  }
+
+  &--links {
+    margin-top: rem(10px);
+
+    a {
+      font-weight: 700;
+    }
+  }
+
+  &--link-spacer {
+    display: inline;
+    margin: 0 rem(10px);
+  }
+
+  &--thesis {
+    h4 {
+      margin-top: rem(10px);
+      margin-bottom: rem(10px);
+    }
+  }
+
+  &--thesis-advisor-title {
+    font-weight: 700;
+  }
+}
+
+.aces--jmc--list {
+  margin-bottom: rem(15px);
+}
+
+.aces--jmc--table {
+
+  padding: rem(15px);
+  border-spacing: 15px;
+  max-width: var(--il-content-max-width);
+  border: 3px solid var(--il-cloud-2);
+
+  th {
+    line-height: 24px;
+    padding: rem(15px);
+    background-color: var(--il-cloud-1);
+  }
+
+  tr:nth-child(odd) {
+    background-color: var(--il-cloud-1);
+  }
+
+  tr, tbody {
+    width: var(--il-content-max-width);
+  }
+
+  td {
+    padding: rem(15px);
+    vertical-align: top;
+  }
+
+  &--photo--container {
+
+    img {
+      width: rem(86px);
+      min-width: rem(86px);
+      height: rem(110px);
+    }
+  }
+
+  &--name--container {
+
+    .aces--jmc--table--name {
+      table-layout: fixed;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .aces--jmc--table--cv, .aces--jmc--table--personal-website {
+      table-layout: fixed;
+    }
+  }
+
+  &--job-market-paper--container {
+    line-height: 24px;
+  }
+
+  &--thesis-advisor--container {
+    line-height: 24px;
+  }
+
+  &--specialization--container {
+    line-height: 24px;
+  }
+
+  &--personal-website {
+    margin-top: 7.5px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 878px) {
+  .aces--jmc {
+    &--photo {
+      width: 155px;
+
+      &-container {
+          flex: 0 0 155px;
+      }
+    }
+  }
+
+}

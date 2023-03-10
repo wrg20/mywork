@@ -1,0 +1,145 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - paragraph.getCreatedTime() will return the paragraph creation timestamp.
+ *   - paragraph.id(): The paragraph ID.
+ *   - paragraph.bundle(): The type of the paragraph, for example, "image" or "text".
+ *   - paragraph.getOwnerId(): The user ID of the paragraph author.
+ *   See Drupal\paragraphs\Entity\Paragraph for a full list of public properties
+ *   and methods for the paragraph object.
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{{ attach_library('aces_theme/course_explorer') }}
+
+{% if content.field_faculty_exp_layer_width['#items'].0.value == 'Fixed Width' %}
+  {% set max_width = 'fixed-width' %}
+{% else %}
+  {% set max_width = 'full-width' %}
+{% endif %}
+  {% set max_width = 'full-width' %}
+
+{%
+  set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  not paragraph.isPublished() ? 'paragraph--unpublished',
+  'col-lg-12 col-md-12 col-sm-12 flex', content.field_course_explorer_bg_color[0]['#markup'] == 'Gray' ? 'background--color--gray ' ~ max_width
+  ]
+%}
+
+{% set term_array = [1, 5, 8] %}
+{% set term_print_array = ['Spring', 'Summer', 'Fall'] %}
+
+{% set current_month = 'now'|date('n') %}
+{% set current_year = 'now'|date('Y') %}
+{% set current_day = 'now'|date('j') %}
+
+{# The below code will need to be changed #}
+{# It's set to add a term in the spring #}
+{# That should only happen in March after the fall semester has been updated #}
+{# At some point we need to add firm dates when we start displaying the fall/summer and spring semesters #}
+{# This is just a hard-coded temporary fix to display the fall semester - 3/8/22 #}
+
+{% if current_month < 5 %}
+  {% set month = 1 %}
+  {% set term_index = 0 %}
+  {% set latest_term = latest_term + 1 %}
+{% elseif current_month < 8 %}
+  {% set month = 5 %}
+  {% set term_index = 1 %}
+{% else %}
+  {% set month = 8 %}
+  {% set term_index = 2 %}
+{% endif %}
+
+{# Override the automatic changing of the display. Change this based on the actual date the data will be updated by campus #}
+{# current_year sets the year of the current semester #}
+{# term_index = 0 -> Spring, term_index = 1 -> Summer, term_index = 2 -> Fall #}
+{# latest_term sets how many more semesters to show after the current semester #}
+{# oldest_term sets how many semesters to display previous to the current one #}
+
+{# Display Summer 2022 to Spring 2023 until changed #}
+{% if (current_month == 3 and current_day >= 6) or current_month >= 4 %}
+  {% set current_year = '2023' %}
+  {% set term_index = 0 %}
+  {% set latest_term = 2 %}
+  {% set oldest_term = 1 %}
+{% else %}
+  {% set current_year = '2022' %}
+  {% set term_index = 2 %}
+  {% set latest_term = 1 %}
+  {% set oldest_term = 1 %}
+{% endif %}
+
+<script> 
+  view = 'explorer';
+  oldest_term = '{{ oldest_term }}';
+  latest_term = '{{ latest_term }}';
+  current_month = '{{ current_month }}';
+  current_year = '{{ current_year }}';
+  term_index = '{{ term_index }}';
+</script>
+
+{% block paragraph %}
+  {# Paragraph ID used for anchor linking #}
+  <div {{ attributes.setAttribute('id', 'paragraph--' ~ paragraph.id() ) }} {{ attributes.addClass(classes) }}>
+    {% block content %}
+      <div class="col-lg-12 col-md-12 flex paragraph--type--aces-course-explorer--wrapper">
+        <div class="course-explorer--tab">
+          <ul class="nav nav-tabs">
+            <li class="active course-explorer--tab--li All"><a href="#" data-term="All" class="course-explorer--tab--link">All Courses</a></li>
+            {% for term in range(oldest_term, 1) %}
+              {# The line below will work fine for going back about a year. It will need to be reworked if they want to go back farther than that. #}
+              {% set print_term = (3 + term_index - term) % 3 %}
+              {% if term > term_index %}
+                {% set print_year = current_year - 1 - ((term - term_index - 1) // 3) %}
+              {% else %}
+                {% set print_year = current_year %}
+              {% endif %}
+              <li class="course-explorer--tab--li 1{{ print_year }}{{term_array[print_term]}}"><a href="#" data-term="1{{ print_year }}{{term_array[print_term]}}" class="course-explorer--tab--link">{{ term_print_array[print_term] }} {{ print_year }}</a></li>
+            {% endfor %}
+            <li class="course-explorer--tab--li 1{{ current_year }}{{term_array[term_index]}}"><a href="#" data-term="1{{ current_year }}{{term_array[term_index]}}" class="course-explorer--tab--link">{{ term_print_array[term_index] }} {{ current_year }}</a></li>
+            {% for term in range(1, latest_term) %}
+              {% set print_term = (term_index + term) % 3 %}
+              {% set print_year = current_year + ((term_index + term) // 3) %}
+              <li class="course-explorer--tab--li 1{{ print_year }}{{term_array[print_term]}}"><a href="#" data-term="1{{ print_year }}{{term_array[print_term]}}" class="course-explorer--tab--link">{{ term_print_array[print_term] }} {{ print_year }}</a></li>
+            {% endfor %}
+          </ul>
+          </div>
+          <div class="course-explorer--course-table">
+          </div>
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

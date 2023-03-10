@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_fundopp_target_group
+    - paragraphs.paragraphs_type.funding_opportunity
+  module:
+    - options
+id: paragraph.funding_opportunity.field_fundopp_target_group
+field_name: field_fundopp_target_group
+entity_type: paragraph
+bundle: funding_opportunity
+label: 'FundOpp_Target Group'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

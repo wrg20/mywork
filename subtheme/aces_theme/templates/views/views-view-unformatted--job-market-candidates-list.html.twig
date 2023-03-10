@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div class="fixed-width aces--jmc--list table-responsive-md">
+<table class="aces--jmc--table table">
+	<tr>
+		<th>&nbsp;</th>
+		<th>Candidate</th>
+		<th>Job Market Paper</th>
+		<th class="aces--jmc--table--thesis-advisor--container">Thesis Advisor</th>
+		<th class="aces--jmc--table--specialization--container">Specialization</th>
+	</tr>
+{% for row in rows %}
+	<tr>
+  	<td class="aces--jmc--table--photo--container">
+  		{% set imagestyle = {
+			  '#theme':      'image_style',
+			  '#style_name': 'personal_photo_233x300_',
+			  '#uri':        row.content['#row']._entity.field_jmc_photo.entity.uri.value,
+			  '#alt':        row.content['#row']._entity.field_jmc_photo.alt,
+			  '#attributes': { class: 'aces--jmc--table--photo' },
+			} %}
+
+			<a href="/node/{{ row.content['#row']._entity.get('nid').value }}">{{ imagestyle }}</a>
+  	</td>
+  	<td class="aces--jmc--table--name--container">
+	    <div class="aces--jmc--table--name">
+	    	<a href="/node/{{ row.content['#row']._entity.get('nid').value }}">{{ row.content['#row']._entity.field_jmc_first_name.value }} {{ row.content['#row']._entity.title.value }}</a>
+	    </div>
+	    <div class="aces--jmc--table--cv">
+	    	{% if row.content['#row']._entity.field_jmc_cv_link.value %}
+		    	<a href="{{ row.content['#row']._entity.field_jmc_cv_link.uri }}">CV</a>
+	    	{% else %}
+	    		&nbsp;
+    		{% endif %}
+	    </div>
+	    <div class="aces--jmc--table--personal-website">
+	    	{% if row.content['#row']._entity.field_jmc_personal_website.value %}
+		    	<a href="{{ row.content['#row']._entity.field_jmc_personal_website.uri }}">Personal Website</a>
+	    	{% else %}
+	    		&nbsp;
+    		{% endif %}
+	    </div>
+	  </td>
+  	<td class="aces--jmc--table--job-market-paper--container">
+    	{% if row.content['#row']._entity.field_jmc_job_market_paper_link.value %}
+	    	{{ link(row.content['#row']._entity.field_jmc_job_market_paper_link.title, row.content['#row']._entity.field_jmc_job_market_paper_link.uri) }}
+    	{% else %}
+    		&nbsp;
+  		{% endif %}
+  	</td>
+  	<td class="aces--jmc--table--thesis-advisor--container">
+  		{% for advisor in row.content['#row']._entity.field_jmc_thesis_advisor %}
+	  		{{ link(advisor.title, advisor.uri) }}<br />
+	  	{% endfor %}
+  	</td>
+  	<td class="aces--jmc--table--specialization--container">
+  		{{ row.content['#row']._entity.field_jmc_specialization.value }}
+  	</td>
+  </tr>
+{% endfor %}
+</table>
+</div>

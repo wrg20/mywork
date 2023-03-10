@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{{ attach_library('aces_theme/program_explorer') }}
+
+<script> 
+  program = 'program_explorer';
+</script>
+
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+<div>
+<div role="status"></div>		
+<div class="ilfw--program-explorer--card-list table-responsive-md">
+	<!-- kint(view.result[0]._entity.field_program_topic)   -->
+{% for row in rows %}
+	<div class="ilfw--program-explorer--card">
+<!--		loop index: {{ loop.index - 1 }}<br>
+		Title: {{ view.result[loop.index - 1]._entity.title[0].value }}<br>
+		Image: {{ file_url(view.result[loop.index - 1]._entity.fields.field_program_image.entity.fileuri) }}<br>
+		Department: {{ view.result[loop.index - 1]._entity.field_program_department[0].value }}<br>
+		Program Type: {{ view.result[loop.index - 1]._entity.field_program_type[0].value }}<br>
+		Student Status: {{ view.result[loop.index - 1]._entity.field_program_student_status[0].value }}<br>
+		Body: {{ view.result[loop.index - 1]._entity.body.value }}<br>
+		Program Format: {{ view.result[loop.index - 1]._entity.field_program_format[0].value }}<br>
+		{% for format in view.result[loop.index - 1]._entity.field_program_format %}
+			{{ format.value }}<br>
+		{% endfor %} -->
+<div class="ilfw--program-explorer--card--container">
+	<div>
+		<div>
+			{% set imagestyle = {
+			  '#theme':      'image_style',
+			  '#style_name': 'program_image',
+			  '#uri':        view.result[loop.index - 1]._entity.fields.field_program_image.entity.fileuri,
+			  '#alt':        view.result[loop.index - 1]._entity.title[0].value,
+			  '#attributes': { class: 'ilfw--program-explorer--card--photo--container' },
+			} %}
+
+    	<h3 class="ilfw--program-explorer--card--photo-container"><a href="{{ view.result[loop.index - 1]._entity.field_program_link[0].value.uri }}">{{ imagestyle }}<span class="ilfw--program-explorer--card--title">{{ view.result[loop.index - 1]._entity.title[0].value }}</span></a></h3>
+		</div>
+
+		<div class="ilfw--program-explorer--card--program-type">
+			{{ view.result[loop.index - 1]._entity.field_program_type[0].value }}
+		</div>
+
+		<div class="ilfw--program-explorer--card--body">
+			{{ view.result[loop.index - 1]._entity.body.value | raw }}
+		</div>
+</div>
+
+		<div class="ilfw--program-explorer--card--program-format">
+			{% set format_number = 0 %}
+			{% for format in view.result[loop.index - 1]._entity.field_program_format %}
+				{% if format_number > 0 %}
+					and/or
+				{% endif %}
+				{% set format_number = 1 %}
+				{{ format.value }}
+			{% endfor %}
+		</div>
+</div>
+	</div>
+{% endfor %}
+</div>
+</div>

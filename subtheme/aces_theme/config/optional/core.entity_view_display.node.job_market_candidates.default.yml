@@ -1,0 +1,204 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job_market_candidates.body
+    - field.field.node.job_market_candidates.field_jmc_anticipated_completion
+    - field.field.node.job_market_candidates.field_jmc_cv_link
+    - field.field.node.job_market_candidates.field_jmc_degree_status
+    - field.field.node.job_market_candidates.field_jmc_email
+    - field.field.node.job_market_candidates.field_jmc_first_name
+    - field.field.node.job_market_candidates.field_jmc_google_scholar_link
+    - field.field.node.job_market_candidates.field_jmc_job_market_paper_link
+    - field.field.node.job_market_candidates.field_jmc_linkedin_profile
+    - field.field.node.job_market_candidates.field_jmc_personal_website
+    - field.field.node.job_market_candidates.field_jmc_phone
+    - field.field.node.job_market_candidates.field_jmc_photo
+    - field.field.node.job_market_candidates.field_jmc_publications
+    - field.field.node.job_market_candidates.field_jmc_references
+    - field.field.node.job_market_candidates.field_jmc_specialization
+    - field.field.node.job_market_candidates.field_jmc_teaching_experience
+    - field.field.node.job_market_candidates.field_jmc_thesis_advisor
+    - field.field.node.job_market_candidates.field_jmc_thesis_title
+    - node.type.job_market_candidates
+  module:
+    - image
+    - link
+    - options
+    - telephone
+    - text
+    - user
+id: node.job_market_candidates.default
+targetEntityType: node
+bundle: job_market_candidates
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_jmc_anticipated_completion:
+    weight: 9
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_jmc_cv_link:
+    weight: 13
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_degree_status:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_jmc_email:
+    weight: 5
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_jmc_first_name:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_jmc_google_scholar_link:
+    weight: 15
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_job_market_paper_link:
+    weight: 11
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_linkedin_profile:
+    weight: 16
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_personal_website:
+    weight: 14
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_phone:
+    weight: 6
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_jmc_photo:
+    weight: 23
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_jmc_publications:
+    weight: 18
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_jmc_references:
+    weight: 22
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_jmc_specialization:
+    weight: 8
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_jmc_teaching_experience:
+    weight: 17
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_jmc_thesis_advisor:
+    weight: 24
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_jmc_thesis_title:
+    weight: 19
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
