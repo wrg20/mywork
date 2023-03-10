@@ -1,0 +1,2 @@
+This javascript file consumed a JSON formated geolocation information that was output from a custom content type for the leaflet
+JS library.  It was used in conjunction with openstreetmap to show locations on a map that the University had visited.  You can see the various attributes that were passed by the /points JSON file Drupal service.

@@ -1,14 +1,4 @@
 <?php
-/**
-* Implements hook_theme_suggestions_HOOK_alter for blocks.
-*/
-function aces_theme_suggestions_block_alter(&$suggestions, $variables) {
-
-  // Load theme suggestions for blocks from parent theme.
-  foreach ($suggestions as &$suggestion) {
-    $suggestion = str_replace('aces_theme', 'illinois_framework_theme', $suggestion);
-  }
-}
 
 /**
  * Implements hook_preprocess().
